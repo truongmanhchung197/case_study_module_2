@@ -59,17 +59,19 @@ public class FootBallClub {
         this.listFootballPlayer = listFootballPlayer;
     }
 
-    public void displayListFootballPlayer() {
+    public void displayInformationClub(){
+        System.out.println("Name: "+name+", Stadium: "+nameOfStadium+", Founded year: "+foundedYear+", Budget of Club: "+budgetOfClub);
         System.out.println("List football player of the club " + getName());
-        System.out.printf("|-20%s|-15%s|-10%s|-20%s|-15%s|-15%s|", "Name", "Date of birth", "Country", "Playing position", "Football Club", "Transfer Value");
+        System.out.printf("|%-25s|%-15s|%-12s|%-20s|%-20s|%-15s|", "Name", "Date of birth", "Country", "Playing position", "Football Club", "Transfer Value");
         for (HashMap.Entry<String, FootballPlayer> entry : listFootballPlayer.entrySet()) {
-            System.out.printf("|-20%s|-15%s|-10%s|-20%s|-15%s|-15%d|",
+            System.out.printf("\n|%-25s|%15s|%-12s|%-20s|%-20s|%15d|",
                     entry.getValue().getName(),
-                    entry.getValue().getCountry(),
                     entry.getValue().getDateOfBirth(),
+                    entry.getValue().getCountry(),
                     entry.getValue().getPlayingPosition(),
                     entry.getValue().getFootballClub(),
                     entry.getValue().getTransferValue());
         }
+        System.out.println("");
     }
 }

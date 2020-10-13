@@ -1,4 +1,6 @@
-public class FootballPlayer {
+import java.io.Serializable;
+
+public class FootballPlayer implements Serializable {
     private String name;
     private String dateOfBirth;
     private String country;
@@ -66,15 +68,7 @@ public class FootballPlayer {
         this.transferValue = transferValue;
     }
 
-    @Override
-    public String toString() {
-        return "FootballPlayer{" +
-                "name='" + name + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", country='" + country + '\'' +
-                ", playingPosition='" + playingPosition + '\'' +
-                ", footballClub='" + footballClub + '\'' +
-                ", transferValue=" + transferValue +
-                '}';
+    public void displayInformation(){
+        System.out.printf("\n|%-25s|%15s|%-12s|%-20s|%-20s|%15d|",name,dateOfBirth,country,playingPosition,footballClub,transferValue);
     }
 }
