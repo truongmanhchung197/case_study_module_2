@@ -49,6 +49,7 @@ public class Manager {
         newListFootballPlayer.put(footballPlayer.getName(), footballPlayer);
         // cập nhật lại danh sách cầu thủ của clb
         this.footBallClub.setListFootballPlayer(newListFootballPlayer);
+        market.remove(footballPlayer.getName());
         updateDatabase(newListFootballPlayer);
         updateFifa(footballPlayer);
     }
@@ -60,7 +61,6 @@ public class Manager {
             FootballPlayer footballPlayer = market.get(key);
             if (name.equalsIgnoreCase(footballPlayer.getName())) {
                 addFootballPlayer(footballPlayer);
-                market.remove(footballPlayer.getName());
                 // cập nhật lại ngân sách của clb sau khi mua cầu thủ
                 newBudget -= footballPlayer.getTransferValue();
                 this.footBallClub.setBudgetOfClub(newBudget);
@@ -73,6 +73,7 @@ public class Manager {
         LinkedHashMap<String, FootballPlayer> newListFootballPlayer = getFootBallClub().getListFootballPlayer();
         newListFootballPlayer.remove(footballPlayer.getName());
         getFootBallClub().setListFootballPlayer(newListFootballPlayer);
+        market.put(footballPlayer.getName(),footballPlayer);
         updateDatabase(newListFootballPlayer);
     }
 
@@ -84,7 +85,6 @@ public class Manager {
             FootballPlayer footballPlayer = listFootballPlayer.get(key);
             if (name.equalsIgnoreCase(footballPlayer.getName())) {
                 deleteFootballPlayer(footballPlayer);
-                market.put(footballPlayer.getName(),footballPlayer);
                 newBudget+=footballPlayer.getTransferValue();
                 this.footBallClub.setBudgetOfClub(newBudget);
                 break;
